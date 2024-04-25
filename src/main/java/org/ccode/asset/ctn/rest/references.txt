@@ -1,0 +1,15 @@
+
+Operations:
+
+park
+unpark
+moveNorth
+moveSouth
+moveEast
+moveWest
+track
+untrack
+trackRate
+maxRate
+slew
+setCoord
