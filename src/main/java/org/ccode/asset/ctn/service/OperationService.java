@@ -1,4 +1,4 @@
-package org.ccode.asset.ctn.rest;
+package org.ccode.asset.ctn.service;
 
 import org.glassfish.jersey.process.internal.RequestScoped;
 
