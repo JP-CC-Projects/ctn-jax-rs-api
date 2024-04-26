@@ -7,20 +7,21 @@ import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
- 
+
+//This file is the example template for all subsequent controllers
+
+
 @Path("/hello")
 public class HelloWorldService {
- 
+
 	@GET
 	@Path("/{name}")
 	public Response getMsg(@PathParam("name") String name) {
- 
 		String output = "Welcome   : " + name;
- 
 		return Response.ok().entity(output).build();
  
 	}
-	
+
     @GET
     @Path("/ping")
     public Response ping() {

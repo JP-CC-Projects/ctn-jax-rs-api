@@ -1,6 +1,13 @@
 
-Operations:
+API ENDPOINTS:
+mount
+camera
+dome
+filter
+focuser
+weather
 
+OPERATIONS:
 park
 unpark
 moveNorth
