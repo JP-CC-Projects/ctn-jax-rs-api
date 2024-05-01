@@ -1,5 +1,3 @@
-package org.ccode.asset.ctn;
-
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;

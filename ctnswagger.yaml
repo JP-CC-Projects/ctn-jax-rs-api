@@ -1,0 +1,77 @@
+openapi: 3.0.3
+info:
+  title: CTN Telescope Operations API - OpenAPI 3.0
+  description: >-
+    This is a sample server for Telescope Operations based on the OpenAPI 3.0
+    specification. This API provides functionality to control telescope mount
+    operations and retrieve astronomical data. For more detailed information and
+    updates, refer to the API documentation.
+  termsOfService: http://example.com/terms/
+  contact:
+    email: api@telescopeoperations.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+servers:
+  - url: https://example.com/api/v1
+tags:
+  - name: telescope
+    description: Operations for telescope control and data retrieval
+paths:
+  /ctn/mount/{operation}:
+    get:
+      tags:
+        - telescope
+      summary: Execute a telescope mount operation
+      description: >-
+        This endpoint allows for the execution of various mount operations on
+        the telescope, such as 'track', 'slew', and 'halt'. The specific
+        operation to be performed should be specified in the path parameter.
+      operationId: executeMountOperation
+      parameters:
+        - name: operation
+          in: path
+          description: The operation to be executed on the telescope mount
+          required: true
+          schema:
+            type: string
+            enum:
+              - park
+              - unpark
+              - moveNorth
+              - moveSouth
+              - moveEast
+              - moveWest
+              - track
+              - untrack
+              - trackRate
+              - maxRate
+              - slew
+              - setCoord
+      responses:
+        '200':
+          description: Operation executed successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: success
+                  message:
+                    type: string
+                    example: Operation has been executed successfully.
+        '400':
+          description: Invalid operation requested
+        '500':
+          description: Internal server error
+security:
+  - apiKeyAuth: []
+components:
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
