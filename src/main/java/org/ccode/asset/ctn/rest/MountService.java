@@ -1,22 +1,22 @@
 package org.ccode.asset.ctn.rest;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.annotations.Api;
-import jakarta.inject.Inject;
+import io.swagger.annotations.ApiOperation;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
-import org.ccode.asset.ctn.service.OperationService;
 
-@Api
+@Api(value = "/ctn/mount", description = "Hello Mount Service")
 @Path("/ctn/mount")
 public class MountService {
 
     @GET
-    @Path("/")
-    public Response mountOperation(@HeaderParam("Operation") String operation) {
+    @Path("/{operation}")
+    @Produces(MediaType.TEXT_PLAIN)
+    @ApiOperation(value = "Mount Operator API", notes = "Mount API Controlling CTN")
+    public Response mountOperation(@PathParam("operation") String operation) {
         //Add logic to iterate though an enum/array of mount operations for a positive match
-        String output = "Welcome   : " + operation;
+        String output = "Welcome   : " + operation + "\n";
         return Response.ok().entity(output).build();
     }
 
@@ -25,7 +25,7 @@ public class MountService {
     public Response ping() {
         //Get feedback from the IRL mount to make sure
         //electricity and mechanical functions are live?
-        return Response.ok().entity("Mount service online").build();
+        return Response.ok().entity("Mount service online \n").build();
     }
 
     @GET
@@ -33,7 +33,7 @@ public class MountService {
     @Produces(MediaType.APPLICATION_JSON)
     public Response getNotification(@PathParam("id") int id) {
         return Response.ok()
-                .entity(new String("{\"" + id + "\":\"test message\"}"))
+                .entity(new String("{\"" + id + "\":\"test message\"}\n"))
                 .build();
     }
 

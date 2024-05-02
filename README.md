@@ -15,3 +15,6 @@ Before running the application, ensure you have the following installed:
 
 ### Swagger
 - Lorem ipsum yadda yadda
+
+### Test Endpoint With:
+- curl http://localhost:8080/api/ctn/mount/ping
