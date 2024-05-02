@@ -14,7 +14,7 @@ info:
     url: http://www.apache.org/licenses/LICENSE-2.0.html
   version: 1.0.0
 servers:
-  - url: https://example.com/api/v1
+  - url: https://open-development.com/api/v1
 tags:
   - name: telescope
     description: Operations for telescope control and data retrieval
