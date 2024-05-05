@@ -5,10 +5,16 @@ FROM openjdk:21-oraclelinux8
 WORKDIR /app
 
 # Copy your Maven project files into the Docker container
-COPY . /app
+COPY . .
 
-# Install Maven and other necessary tools
-RUN yum install -y maven && yum clean all
+# Install Maven using apt (Debian/Ubuntu)
+RUN apt-get update && \
+    apt-get install -y maven && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/* \
+
+# Build the application, skipping tests to speed up deployment
+RUN mvn -DskipTests clean install
 
 # Build the application, skipping tests to speed up deployment
 RUN --mount=type=cache,id=s/b4d5caca-d379-4c7c-a78d-10725c38dd97-m2/repository,target=/root/.m2 \
@@ -18,4 +24,4 @@ RUN --mount=type=cache,id=s/b4d5caca-d379-4c7c-a78d-10725c38dd97-m2/repository,t
 EXPOSE 8080
 
 # Command to run your application
-CMD ["java", "-jar", "target/your-application.jar"]
+CMD ["java", "-jar", "target/CCODEPatternRest-jar-with-dependencies.jar"]
