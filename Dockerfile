@@ -11,7 +11,7 @@ COPY . /app
 RUN yum install -y maven && yum clean all
 
 # Build the application, skipping tests to speed up deployment
-RUN --mount=type=cache,id=s/<service-id>-maven,target=/root/.m2 \
+RUN --mount=type=cache,id=s/b4d5caca-d379-4c7c-a78d-10725c38dd97-m2/repository,target=/root/.m2 \
     mvn -DskipTests clean install
 
 # Expose the port your application uses
