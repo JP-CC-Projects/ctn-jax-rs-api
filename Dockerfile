@@ -6,11 +6,18 @@ WORKDIR /app
 
 # Copy your Maven project files into the Docker container
 COPY . /app
-
+RUN echo "Checking OS release information..." && \
+    cat /etc/os-release && \
+    echo "Listing potential package managers..." && \
+    ls /usr/bin/*apt* /usr/bin/*yum* /usr/bin/*dnf* || echo "No common package managers found" && \
+    echo "Checking for apt-get, yum, and dnf presence..." && \
+    which apt-get || echo "apt-get not found" && \
+    which yum || echo "yum not found" && \
+    which dnf || echo "dnf not found"
 # Install Maven using apt (Debian/Ubuntu)
-RUN dnf -y update && \
-    dnf -y install maven && \
-    dnf clean all
+RUN yum -y update && \
+    yum -y install maven && \
+    yum clean all
 
 # Build the application, skipping tests to speed up deployment
 RUN mvn -DskipTests clean install
