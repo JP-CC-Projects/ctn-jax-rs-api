@@ -8,10 +8,10 @@ WORKDIR /app
 COPY . .
 
 # Install Maven using apt (Debian/Ubuntu)
-RUN apt-get update && \
-    apt-get install -y maven && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/* \
+#RUN apt-get update && \
+#    apt-get install -y maven && \
+#    apt-get clean && \
+#    rm -rf /var/lib/apt/lists/* \
 
 # Build the application, skipping tests to speed up deployment
 RUN mvn -DskipTests clean install
