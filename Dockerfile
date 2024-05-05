@@ -5,13 +5,12 @@ FROM openjdk:21-oraclelinux8
 WORKDIR /app
 
 # Copy your Maven project files into the Docker container
-COPY . .
+COPY . /app
 
 # Install Maven using apt (Debian/Ubuntu)
-RUN apt-get update && \
-    apt-get install -y maven && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/* \
+RUN dnf -y update && \
+    dnf -y install maven && \
+    dnf clean all
 
 # Build the application, skipping tests to speed up deployment
 RUN mvn -DskipTests clean install
