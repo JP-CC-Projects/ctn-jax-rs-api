@@ -1,0 +1,22 @@
+
+API ENDPOINTS:
+mount
+camera
+dome
+filter
+focuser
+weather
+
+OPERATIONS:
+park
+unpark
+moveNorth
+moveSouth
+moveEast
+moveWest
+track
+untrack
+trackRate
+maxRate
+slew
+setCoord
