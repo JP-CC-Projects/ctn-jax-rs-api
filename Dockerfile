@@ -25,12 +25,12 @@ ENV RAILWAY_PUBLIC_DOMAIN=$RAILWAY_PUBLIC_DOMAIN \
 # Remove the default web applications deployed with Tomcat
 RUN rm -rf /usr/local/tomcat/webapps/*
 
-RUN echo $RAILWAY_SERVICE_NAME
-
 RUN apt-get update && \
     apt-get install -y maven
-
 RUN mvn clean install
+
+RUN echo $RAILWAY_SERVICE_NAME
+
 
 RUN apt-get clean && \
     rm -rf /var/lib/apt/lists/*
