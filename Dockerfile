@@ -63,7 +63,7 @@ WORKDIR /app
 COPY target/CCODE.pattern.rest.war /usr/local/tomcat/webapps/ROOT.war
 
 # Build the application, skipping tests to speed up deployment
-RUN --mount=type=cache,id=s/b4d5caca-d379-4c7c-a78d-10725c38dd97-maven,target=/root/.m2/repository \
+RUN --mount=type=cache,id=s/b4d5caca-d379-4c7c-a78d-10725c38dd97-/root/.m2/repository,target=/root/.m2/repository \
     mvn -DskipTests clean install
 
 # Expose the port your application uses
