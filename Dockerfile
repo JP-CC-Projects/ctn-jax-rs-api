@@ -5,7 +5,7 @@
 FROM tomcat:10.1-jdk21-temurin
 
 # Declare SERVICE_ID build argument, pulled from application.properties or the env
-ARG SERVICE_ID
+ARG RAILWAY_SERVICE_ID
 
 # Remove the default web applications deployed with Tomcat
 RUN rm -rf /usr/local/tomcat/webapps/*
@@ -36,7 +36,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 # Build the application, skipping tests to speed up deployment
-RUN --mount=type=cache,id=s/${SERVICE_ID}-maven,target=/root/.m2 \
+RUN --mount=type=cache,id=s/${RAILWAY_SERVICE_ID}-maven,target=/root/.m2 \
     mvn -DskipTests clean install
 
 # Expose the port your application uses
