@@ -5,7 +5,24 @@
 FROM tomcat:10.1-jdk21-temurin
 
 # Declare SERVICE_ID build argument, pulled from application.properties or the env
+# Declare all necessary ARGs for Railway-specific and app-specific variables
+ARG RAILWAY_PUBLIC_DOMAIN
+ARG RAILWAY_PRIVATE_DOMAIN
+ARG RAILWAY_PROJECT_NAME
+ARG RAILWAY_ENVIRONMENT_NAME
+ARG RAILWAY_SERVICE_NAME
+ARG RAILWAY_PROJECT_ID
+ARG RAILWAY_ENVIRONMENT_ID
 ARG RAILWAY_SERVICE_ID
+
+ENV RAILWAY_PUBLIC_DOMAIN=$RAILWAY_PUBLIC_DOMAIN \
+    RAILWAY_PRIVATE_DOMAIN=$RAILWAY_PRIVATE_DOMAIN \
+    RAILWAY_PROJECT_NAME=$RAILWAY_PROJECT_NAME \
+    RAILWAY_ENVIRONMENT_NAME=$RAILWAY_ENVIRONMENT_NAME \
+    RAILWAY_SERVICE_NAME=$RAILWAY_SERVICE_NAME \
+    RAILWAY_PROJECT_ID=$RAILWAY_PROJECT_ID \
+    RAILWAY_ENVIRONMENT_ID=$RAILWAY_ENVIRONMENT_ID \
+    RAILWAY_SERVICE_ID=$RAILWAY_SERVICE_ID
 
 # Remove the default web applications deployed with Tomcat
 RUN rm -rf /usr/local/tomcat/webapps/*
@@ -36,7 +53,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 # Build the application, skipping tests to speed up deployment
-RUN --mount=type=cache,id=s/${RAILWAY_SERVICE_ID}-maven,target=/root/.m2 \
+RUN --mount=type=cache,id=s/<service-id>-maven,target=/root/.m2 \
     mvn -DskipTests clean install
 
 # Expose the port your application uses
