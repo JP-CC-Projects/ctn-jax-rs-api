@@ -27,6 +27,8 @@ ENV RAILWAY_PUBLIC_DOMAIN=$RAILWAY_PUBLIC_DOMAIN \
 # Remove the default web applications deployed with Tomcat
 RUN rm -rf /usr/local/tomcat/webapps/*
 
+RUN echo $RAILWAY_SERVICE_NAME
+
 # Copy your WAR file into the Docker container into Tomcat's webapps directory
 COPY target/CCODE.pattern.rest.war /usr/local/tomcat/webapps/ROOT.war
 
@@ -53,11 +55,11 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 # Build the application, skipping tests to speed up deployment
-RUN --mount=type=cache,id=s/<service-id>-maven,target=/root/.m2 \
+RUN --mount=type=cache,id=s/b4d5caca-d379-4c7c-a78d-10725c38dd97-maven,target=/root/.m2 \
     mvn -DskipTests clean install
 
 # Expose the port your application uses
-EXPOSE 8080
+#EXPOSE 8080
 
 # Command to run your application
 CMD ["catalina.sh", "run"]
