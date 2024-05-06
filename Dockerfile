@@ -30,11 +30,17 @@ RUN rm -rf /usr/local/tomcat/webapps/*
 RUN echo $RAILWAY_SERVICE_NAME
 
 # Install Maven
+# Update packages and install Maven
 RUN apt-get update && \
-    apt-get install -y maven && \
-    mvn clean install && \
-    apt-get clean && \
+    apt-get install -y maven
+
+# Run Maven to build the project
+RUN mvn clean install
+
+# Clean up the package manager cache to reduce the image size
+RUN apt-get clean && \
     rm -rf /var/lib/apt/lists/*
+
 
 # Copy your WAR file into the Docker container into Tomcat's webapps directory
 
