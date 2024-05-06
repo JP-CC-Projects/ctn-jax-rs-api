@@ -21,6 +21,9 @@ ENV RAILWAY_PUBLIC_DOMAIN=$RAILWAY_PUBLIC_DOMAIN \
     RAILWAY_SERVICE_ID=$RAILWAY_SERVICE_ID
 
 # Remove default web applications
+
+RUN ls -R
+
 RUN rm -rf /usr/local/tomcat/webapps/*
 
 # Install necessary tools
