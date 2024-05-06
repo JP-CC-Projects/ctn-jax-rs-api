@@ -6,16 +6,8 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="ctn-jax-rs-api" />
+        <module name="org.ccode.pattern.rest" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="org.ccode.pattern.rest" target="21" />
-    </bytecodeTargetLevel>
-  </component>
-  <component name="JavacSettings">
-    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="ctn-jax-rs-api" options="-parameters" />
-    </option>
   </component>
 </project>
