@@ -25,7 +25,7 @@ RUN rm -rf ./*
 RUN apt-get update && \
     apt-get install -y maven
 
-COPY target/CCODE.pattern.rest.war ROOT.war
+COPY ./target/CCODE.pattern.rest.war ROOT.war
 
 WORKDIR /app
 
