@@ -33,7 +33,7 @@ COPY target/CCODE.pattern.rest.war /usr/local/tomcat/webapps/ROOT.war
 WORKDIR /app
 
 # Use cache mount for Maven dependencies to speed up builds
-RUN --mount=type=cache,id=s/b4d5caca-d379-4c7c-a78d-10725c38dd97-/root/.m2,target=/root/.m2 \
+RUN --mount=type=cache,id=s/b4d5caca-d379-4c7c-a78d-10725c38dd97-/root/.m2/repository,target=/root/.m2/repository \
     mvn -DskipTests clean install
 
 # Clean up apt cache and unnecessary lists
