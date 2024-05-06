@@ -18,7 +18,7 @@ WORKDIR /app
 RUN --mount=type=cache,id=s/cbcd6488-98bc-4b7a-98d0-a1209477cc8e-/root/.m2,target=/root/.m2 \
     mvn -DskipTests clean install
 #
-RUN apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+#RUN apt-get clean && \
+#    rm -rf /var/lib/apt/lists/*
 
 CMD ["catalina.sh", "run"]
