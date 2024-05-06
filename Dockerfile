@@ -31,17 +31,20 @@ RUN echo $RAILWAY_SERVICE_NAME
 
 # Install Maven
 RUN apt-get update && \
-    apt-get install -y maven && \
+    apt-get install -y maven tree && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* \
 
 # Copy your WAR file into the Docker container into Tomcat's webapps directory
 
+# Copy your Maven project files into the Docker container
+COPY . /app
+
 # Set the working directory in the Docker container
 WORKDIR /app
 
-# Copy your Maven project files into the Docker container
-COPY . /app
+RUN tree
+
 
 # Determines what installation tool is
 #RUN echo "Checking OS release information..." && \
