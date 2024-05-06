@@ -29,8 +29,13 @@ RUN rm -rf /usr/local/tomcat/webapps/*
 
 RUN echo $RAILWAY_SERVICE_NAME
 
+# Install Maven
+RUN apt-get update && \
+    apt-get install -y maven && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/* \
+
 # Copy your WAR file into the Docker container into Tomcat's webapps directory
-COPY target/CCODE.pattern.rest.war /usr/local/tomcat/webapps/ROOT.war
 
 # Set the working directory in the Docker container
 WORKDIR /app
@@ -48,11 +53,7 @@ COPY . /app
 #    which yum || echo "yum not found" && \
 #    which dnf || echo "dnf not found"
 
-# Install Maven
-RUN apt-get update && \
-    apt-get install -y maven && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+COPY target/CCODE.pattern.rest.war /usr/local/tomcat/webapps/ROOT.war
 
 # Build the application, skipping tests to speed up deployment
 RUN --mount=type=cache,id=s/b4d5caca-d379-4c7c-a78d-10725c38dd97-maven,target=/root/.m2 \
