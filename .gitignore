@@ -1,4 +1,4 @@
-/target/
+
 *.properties
 *.env
 *.idea
