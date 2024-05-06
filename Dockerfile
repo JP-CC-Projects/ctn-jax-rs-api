@@ -18,17 +18,17 @@ ENV RAILWAY_PUBLIC_DOMAIN=$RAILWAY_PUBLIC_DOMAIN \
     RAILWAY_ENVIRONMENT_ID=$RAILWAY_ENVIRONMENT_ID \
     RAILWAY_SERVICE_ID=$RAILWAY_SERVICE_ID
 
+WORKDIR /usr/local/tomcat/webapps
 
-RUN ls -R
-
-RUN rm -rf /usr/local/tomcat/webapps/*
+RUN rm -rf ./*
 
 RUN apt-get update && \
     apt-get install -y maven
 
-COPY target/CCODE.pattern.rest.war /usr/local/tomcat/webapps/ROOT.war
-
+COPY target/CCODE.pattern.rest.war ROOT.war
+RUN ls -la
 WORKDIR /app
+
 
 RUN --mount=type=cache,id=s/cbcd6488-98bc-4b7a-98d0-a1209477cc8e-/root/.m2/repository,target=/root/.m2/repository \
     mvn -DskipTests clean install
