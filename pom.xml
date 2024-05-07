@@ -60,6 +60,12 @@
             <artifactId>jakarta.xml.bind-api</artifactId>
             <version>4.0.2</version>
         </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.module</groupId>
+            <artifactId>jackson-module-jaxb-annotations</artifactId>
+            <version>2.17.1</version>
+        </dependency>
+
 
 
         <!-- Swagger JAX-RS + Swagger UI -->

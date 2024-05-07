@@ -3,7 +3,9 @@ package org.ccode.asset.ctn.rest;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
-import org.ccode.asset.ctn.domain.ResponseMessage;
+import org.ccode.asset.ctn.domain.PingResponse;
+
+import java.time.Instant;
 
 @Path("/ctn/mount")
 public class MountService {
@@ -19,12 +21,14 @@ public class MountService {
 
     @GET
     @Path("/ping")
-    @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response ping() {
-        ResponseMessage response200 = new ResponseMessage();
+        PingResponse response200 = new PingResponse();
         response200.setResponseMessage("Mount service online");
-        return Response.ok().entity(response200).build();
+        return Response.ok().entity(response200)
+                .header("X-API-Version", "1.0")
+                .header("X-Response-Time", Instant.now().toString())
+                .build();
     }
 
     @GET
