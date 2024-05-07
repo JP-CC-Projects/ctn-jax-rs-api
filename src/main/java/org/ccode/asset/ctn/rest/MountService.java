@@ -19,7 +19,7 @@ public class MountService {
     @GET
     @Path("/ping")
     public Response ping() {
-        return Response.status(200).build();
+        return Response.ok().entity("Mount service online \n").build();
     }
 
     @GET
