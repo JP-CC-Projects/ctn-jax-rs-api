@@ -19,8 +19,6 @@ public class MountService {
     @GET
     @Path("/ping")
     public Response ping() {
-        //Get feedback from the IRL mount to make sure
-        //electricity and mechanical functions are live?
         return Response.status(200).build();
     }
 
