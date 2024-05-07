@@ -21,7 +21,7 @@ public class MountService {
     public Response ping() {
         //Get feedback from the IRL mount to make sure
         //electricity and mechanical functions are live?
-        return Response.ok().entity("Mount service online \n").build();
+        return Response.status(200).build();
     }
 
     @GET
