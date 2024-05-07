@@ -1,3 +1,4 @@
 org/ccode/asset/ctn/Main.class
+org/ccode/asset/ctn/domain/ResponseMessage.class
 org/ccode/asset/ctn/rest/MountService.class
 org/ccode/asset/ctn/App.class
