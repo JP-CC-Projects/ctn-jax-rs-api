@@ -1,17 +1,17 @@
 FROM tomcat:10.1-jdk21-temurin
 
 WORKDIR /usr/local/tomcat/webapps
-#ARG RAILWAY_SERVICE_NAME
-#ENV RAILWAY_SERVICE_NAME=$RAILWAY_SERVICE_NAME
+ARG RAILWAY_SERVICE_NAME
+ENV RAILWAY_SERVICE_NAME=$RAILWAY_SERVICE_NAME
 RUN rm -rf ./*
 RUN rm -rf /usr/local/tomcat/webapps/*
-#RUN echo $RAILWAY_SERVICE_NAME
+RUN echo $RAILWAY_SERVICE_NAME
 
 
 RUN apt-get update && \
     apt-get install -y maven
 RUN apt-get clean && \
-    rm -rf /var/lib/apt/lists/* \
+    rm -rf /var/lib/apt/lists/*
 
 COPY ./target/CCODE.pattern.rest.war ROOT.war
 COPY . /app
