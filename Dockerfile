@@ -38,7 +38,9 @@ EXPOSE $PORT
 ARG RAILWAY_SERVICE_NAME
 
 # Use Railway's cache mounts feature if needed
-# RUN --mount=type=cache,id=s/cbcd6488-98bc-4b7a-98d0-a1209477cc8e-/root/cache/maven,target=/root/.m2 ...
+RUN --mount=type=cache,id=s/cbcd6488-98bc-4b7a-98d0-a1209477cc8e-/root/.m2,target=/root/.m2 \
+    mvn -DskipTests clean install
+
 
 # Set the entrypoint to the script that configures and starts Tomcat
 ENTRYPOINT ["/entrypoint.sh"]
