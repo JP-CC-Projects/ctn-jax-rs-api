@@ -15,6 +15,7 @@ RUN apt-get clean && \
 
 COPY ./target/CCODE.pattern.rest.war ROOT.war
 COPY . /app
+COPY ./conf/server.xml /usr/local/tomcat/conf/
 WORKDIR /app
 
 RUN --mount=type=cache,id=s/cbcd6488-98bc-4b7a-98d0-a1209477cc8e-/root/.m2,target=/root/.m2 \
