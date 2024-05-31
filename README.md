@@ -14,7 +14,7 @@ Before running the application, ensure you have the following installed:
 - The above will launch a local instance of a Tomcat server for development purposes
 
 ### Swagger
-- Lorem ipsum yadda yadda
+- To be made according to Open API 3.0 spec in yaml file
 
 ### Test Endpoint With:
 - curl http://localhost:8080/api/ctn/mount/ping
