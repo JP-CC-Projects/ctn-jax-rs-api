@@ -12,8 +12,13 @@ import java.time.Instant;
 
 @Path("/ctn/mount")
 public class MountService {
+    private final OperationService operationService;
+
     @Inject
-    OperationService operationService;
+    public MountService(OperationService operationService) {
+        this.operationService = operationService;
+    }
+
 
 
     @POST
