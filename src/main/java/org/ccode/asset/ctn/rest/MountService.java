@@ -1,6 +1,4 @@
 package org.ccode.asset.ctn.rest;
-
-import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
@@ -12,13 +10,6 @@ import java.time.Instant;
 
 @Path("/ctn/mount")
 public class MountService {
-    private final OperationService operationService;
-
-    @Inject
-    public MountService(OperationService operationService) {
-        this.operationService = operationService;
-    }
-
 
 
     @POST
@@ -27,7 +18,7 @@ public class MountService {
     @Consumes(MediaType.APPLICATION_JSON)
     public Response mountOperation(@PathParam("operation") String operation,
                                    RequestBody body) {
-        operationService.doOperation(operation, body);
+        OperationService.doOperation(operation, body);
         String output = "Operation" + operation + " has been performed\n";
         return Response.ok().entity(output)
                 .header("X-API-Version", "1.0")

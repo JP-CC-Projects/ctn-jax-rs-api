@@ -3,7 +3,7 @@ org/ccode/asset/ctn/domain/PingResponse.class
 org/ccode/asset/ctn/config/ApiConfig.class
 org/ccode/asset/ctn/domain/RequestBody.class
 org/ccode/asset/ctn/App.class
-org/ccode/asset/ctn/config/ApiConfig$1.class
+org/ccode/asset/ctn/config/ApiConfig$AppBinder.class
 org/ccode/asset/ctn/service/OperationService.class
 org/ccode/asset/ctn/domain/ResponseMessage.class
 org/ccode/asset/ctn/rest/MountService.class
