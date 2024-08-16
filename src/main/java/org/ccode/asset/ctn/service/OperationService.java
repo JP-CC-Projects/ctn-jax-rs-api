@@ -1,11 +1,13 @@
 package org.ccode.asset.ctn.service;
 
 import org.ccode.asset.ctn.domain.RequestBody;
+import org.glassfish.jersey.process.internal.RequestScoped;
 import org.jvnet.hk2.annotations.Service;
 
 import java.util.function.Consumer;
 
 @Service
+@RequestScoped
 public class OperationService {
 
     //Add logic to iterate though an enum/array of mount operations for a positive match
