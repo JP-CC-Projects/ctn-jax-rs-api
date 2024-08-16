@@ -1,22 +1,33 @@
 package org.ccode.asset.ctn.rest;
 
+import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import org.ccode.asset.ctn.domain.PingResponse;
+import org.ccode.asset.ctn.domain.RequestBody;
+import org.ccode.asset.ctn.service.OperationService;
 
 import java.time.Instant;
 
 @Path("/ctn/mount")
 public class MountService {
+    @Inject
+    OperationService operationService;
+
 
     @GET
     @Path("/{operation}")
     @Produces(MediaType.TEXT_PLAIN)
-    public Response mountOperation(@PathParam("operation") String operation) {
-        //Add logic to iterate though an enum/array of mount operations for a positive match
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response mountOperation(@PathParam("operation") String operation,
+                                   RequestBody body) {
+        operationService.doOperation(operation, body);
         String output = "Welcome   : " + operation + "\n";
-        return Response.ok().entity(output).build();
+        return Response.ok().entity(output)
+                .header("X-API-Version", "1.0")
+                .header("X-Response-Time", Instant.now().toString())
+                .build();
     }
 
     @GET
