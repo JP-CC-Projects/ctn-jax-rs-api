@@ -23,7 +23,7 @@ public class MountService {
     public Response mountOperation(@PathParam("operation") String operation,
                                    RequestBody body) {
         operationService.doOperation(operation, body);
-        String output = "Welcome   : " + operation + "\n";
+        String output = "Operation" + operation + " has been performed\n";
         return Response.ok().entity(output)
                 .header("X-API-Version", "1.0")
                 .header("X-Response-Time", Instant.now().toString())

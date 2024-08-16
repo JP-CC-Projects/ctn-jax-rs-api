@@ -25,6 +25,7 @@ public class OperationService {
             case "move":
                 /*Logic for move*/
                 break;
+            default: throw new IllegalArgumentException("Unknown operation: " + operation);
         }
     };
 }
