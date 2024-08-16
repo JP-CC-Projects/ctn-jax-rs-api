@@ -7,6 +7,7 @@ import java.util.function.Consumer;
 
 @Service
 public class OperationService {
+
     //Add logic to iterate though an enum/array of mount operations for a positive match
     public void doOperation(String operation, RequestBody body) {
         parseOperationType.accept(operation);
